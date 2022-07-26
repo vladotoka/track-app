@@ -1,12 +1,20 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
+import { Text, Input, Button } from '@rneui/themed';
+import Spacer from '../components/Spacer';
 
 const SignupScreen = ({ navigation }) => {
   return (
     <View>
-      <Text>SignupScreen</Text>
-      <Button title="Go to Signin" onPress={() => navigation.navigate('Signin')} />
-      <Button title="Go to Main Flow" onPress={() => navigation.navigate('Signin', { isSignedIn: true })} />
+      <Spacer>
+        <Text h3>Sign Up for Tracker</Text>
+      </Spacer>
+      <Input label="Email" />
+      <Spacer />
+      <Input label="Password" />
+      <Spacer>
+        <Button title="Sign Up" />
+      </Spacer>
     </View>
   )
 };

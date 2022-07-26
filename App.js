@@ -46,7 +46,7 @@ function TrackListFlow() {
 
 
 export default function App({ route }) {
-  const isSignedIn = route?.params?.isSignedIn ?? true;
+  const isSignedIn = route?.params?.isSignedIn ?? false;
 
   return (
     <NavigationContainer>
