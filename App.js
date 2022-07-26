@@ -17,8 +17,8 @@ const MenuBottomTab = createBottomTabNavigator();
 function LoginFlow() {
   return (
     <SignStack.Navigator>
-      <SignStack.Screen name="Signin" component={SigninScreen} />
       <SignStack.Screen name="Signup" component={SignupScreen} />
+      <SignStack.Screen name="Signin" component={SigninScreen} />
     </SignStack.Navigator>
   )
 }
@@ -26,7 +26,7 @@ function LoginFlow() {
 function MainFlow() {
   return (
     <MenuBottomTab.Navigator>
-      <MenuBottomTab.Screen name="TrackList" component={TrackListFlow} />
+      <MenuBottomTab.Screen name="TrackFlow" component={TrackListFlow} />
       <MenuBottomTab.Screen name="TrackCreate" component={TrackCreateScreen} />
       <MenuBottomTab.Screen name="Account" component={AccountScreen} />
     </MenuBottomTab.Navigator>
@@ -45,8 +45,8 @@ function TrackListFlow() {
 
 
 
-export default function App({ params }) {
-  const isSignedIn = false;
+export default function App({ route }) {
+  const isSignedIn = route?.params?.isSignedIn ?? true;
 
   return (
     <NavigationContainer>
