@@ -16,7 +16,7 @@ const MenuBottomTab = createBottomTabNavigator();
 
 function LoginFlow() {
   return (
-    <SignStack.Navigator>
+    <SignStack.Navigator screenOptions={{ headerShown: false }}>
       <SignStack.Screen name="Signup" component={SignupScreen} />
       <SignStack.Screen name="Signin" component={SigninScreen} />
     </SignStack.Navigator>
