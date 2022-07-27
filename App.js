@@ -5,6 +5,7 @@ import SignupScreen from './src/screens/SignupScreen';
 import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
+import { Provider as AuthProvider } from './src/context/AuthContext';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -49,16 +50,18 @@ export default function App({ route }) {
   const isSignedIn = route?.params?.isSignedIn ?? false;
 
   return (
-    <NavigationContainer>
-      {!isSignedIn ? (
-        <>
-          <LoginFlow />
-        </>
-      ) : (
-        <>
-          <MainFlow />
-        </>
-      )}
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        {!isSignedIn ? (
+          <>
+            <LoginFlow />
+          </>
+        ) : (
+          <>
+            <MainFlow />
+          </>
+        )}
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
