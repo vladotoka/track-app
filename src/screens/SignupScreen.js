@@ -31,6 +31,7 @@ const SignupScreen = ({ navigation }) => {
         autoCorrect={false}
       />
       {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null}
+      {state?.token ? <Text style={styles.errorMessage}>{state?.token}</Text> : null}
       <Spacer>
         <Button title="Sign Up" onPress={() => signup({ email, password })} />
       </Spacer>
