@@ -8,6 +8,8 @@ const authReducer = (state, action) => {
             return { ...state, errorMessage: action.payload };
         case 'signup':
             return { errMsg: '', token: action.payload };
+        case 'signout':
+            return { errMsg: '', token: null };
         default:
             return state;
     }
@@ -52,6 +54,7 @@ const signin = (dispatch) => {
 const signout = (dispatch) => {
     return () => {
         // somehow sign out
+        dispatch({ type: 'signout' })
     };
 };
 
