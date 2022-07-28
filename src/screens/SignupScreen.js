@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250,
   },
   errorMessage: {
     fontSize: 16,
