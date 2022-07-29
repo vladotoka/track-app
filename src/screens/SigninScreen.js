@@ -8,12 +8,6 @@ import { useFocusEffect } from '@react-navigation/native';
 const SigninScreen = ({ navigation }) => {
   const { state, signin, clearErrorMessage } = useContext(AuthContext);
 
-  useFocusEffect(
-    useCallback(
-      () => clearErrorMessage(), []
-    )
-  );
-
   return (
     <View style={styles.container}>
       <AuthForm
@@ -25,6 +19,7 @@ const SigninScreen = ({ navigation }) => {
         navigation={navigation}
         routeName="Signup"
         text="Don't have an account? Create one in seconds"
+        clearErrorMessage={clearErrorMessage}
       />
     </View>
   )

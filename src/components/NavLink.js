@@ -2,9 +2,15 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Spacer from './Spacer';
 
-const NavLink = ({ navigation, routeName, text }) => {
+
+const NavLink = ({ navigation, routeName, text, clearErrorMessage }) => {
+    const handlePress = () => {
+        if (clearErrorMessage) { clearErrorMessage(); }
+        navigation.navigate(routeName);
+    }
+
     return (
-        <TouchableOpacity onPress={() => navigation.navigate(routeName)}>
+        <TouchableOpacity onPress={handlePress}>
             <Spacer>
                 <Text style={styles.link}>{text}</Text>
             </Spacer>
