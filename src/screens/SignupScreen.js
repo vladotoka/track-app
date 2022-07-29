@@ -10,7 +10,9 @@ const SignupScreen = ({ navigation }) => {
 
   useFocusEffect(
     useCallback(
-      () => clearErrorMessage(), []
+      () => {
+        clearErrorMessage();
+      }, []
     )
   );
 

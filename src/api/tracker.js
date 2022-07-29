@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'http://new-pandas-work-45-84-184-212.loca.lt'
+    baseURL: 'http://polite-regions-know-45-84-184-212.loca.lt'
 });

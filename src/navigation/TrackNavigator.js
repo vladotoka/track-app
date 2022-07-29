@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { navigationRef } from './RootNavigation';
 
 import { Context as AuthContext } from '../context/AuthContext';
 import AccountScreen from '../screens/AccountScreen';
@@ -11,6 +12,7 @@ import SignupScreen from '../screens/SignupScreen';
 import TrackCreateScreen from '../screens/TrackCreateScreen';
 import TrackDetailScreen from '../screens/TrackDetailScreen';
 import TrackListScreen from '../screens/TrackListScreen';
+import ResolveAuthScreen from '../screens/ResolveAuthScreen';
 
 
 const SignStack = createStackNavigator();
@@ -20,6 +22,7 @@ const MenuBottomTab = createBottomTabNavigator();
 function LoginFlow() {
     return (
         <SignStack.Navigator screenOptions={{ headerShown: false }}>
+            <SignStack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
             <SignStack.Screen name="Signup" component={SignupScreen} />
             <SignStack.Screen name="Signin" component={SigninScreen} />
         </SignStack.Navigator>
@@ -50,7 +53,7 @@ const TrackNavigation = () => {
     const { state } = useContext(AuthContext);
 
     return (
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
             {!state.token ? <>
                 <LoginFlow />
             </> : <>

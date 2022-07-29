@@ -1,6 +1,7 @@
 import createDataContext from "./createDataContext";
 import trackerApi from "../api/tracker";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as RootNavigation from '../navigation/RootNavigation';
 
 const authReducer = (state, action) => {
     switch (action.type) {
@@ -68,7 +69,8 @@ const signin = (dispatch) => async ({ email, password }) => {
     }
 };
 
-const signout = (dispatch) => () => {
+const signout = (dispatch) => async () => {
+    await AsyncStorage.removeItem('token');
     dispatch({ type: 'signout' })
 };
 
@@ -76,8 +78,19 @@ const clearErrorMessage = (dispatch) => () => {
     dispatch({ type: 'clear_error_message' })
 };
 
+const tryLocalSignin = (dispatch) => async () => {
+    //chech if there is a JWT in async storage
+    const token = await AsyncStorage.getItem('token');
+    console.log('try local signin invoked, token: ', token);
+    if (token) {
+        dispatch({ type: 'signin', payload: token });
+    } else {
+        RootNavigation.navigate('Signup');
+    }
+};
+
 export const { Provider, Context } = createDataContext(
     authReducer,
-    { signup, signin, signout, clearErrorMessage },
+    { signup, signin, signout, clearErrorMessage, tryLocalSignin },
     { token: null, errorMessage: '' }
 );
