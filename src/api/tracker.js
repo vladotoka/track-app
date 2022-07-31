@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'http://polite-regions-know-45-84-184-212.loca.lt'
+    baseURL: 'http://orange-hounds-sleep-45-84-184-212.loca.lt'
 });

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './RootNavigation';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Context as AuthContext } from '../context/AuthContext';
 import AccountScreen from '../screens/AccountScreen';
@@ -32,9 +33,32 @@ function LoginFlow() {
 function MainFlow() {
     return (
         <MenuBottomTab.Navigator>
-            <MenuBottomTab.Screen name="TrackFlow" component={TrackListFlow} />
-            <MenuBottomTab.Screen name="TrackCreate" component={TrackCreateScreen} />
-            <MenuBottomTab.Screen name="Account" component={AccountScreen} />
+            <MenuBottomTab.Screen
+                name="TrackFlow"
+                component={TrackListFlow}
+                options={{
+                    tabBarLabel: 'Tracks',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="map-marker-path" color={color} size={size} />
+                    ),
+                }} />
+            <MenuBottomTab.Screen
+                name="TrackCreate"
+                component={TrackCreateScreen}
+                options={{
+                    tabBarLabel: 'New track',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="map-marker-plus" color={color} size={size} />
+                    ),
+                }} />
+            <MenuBottomTab.Screen
+                name="Account"
+                component={AccountScreen}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="account" color={color} size={size} />
+                    ),
+                }} />
         </MenuBottomTab.Navigator>
     )
 }
