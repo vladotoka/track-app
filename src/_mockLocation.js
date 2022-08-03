@@ -1,5 +1,5 @@
 /**
- * This File emmits fake changes of gps location
+ * This File emits fake changes of gps location
  * to expo location
  */
 

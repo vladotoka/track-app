@@ -12,7 +12,6 @@ const Map = () => {
     return <ActivityIndicator size="large" style={{ marginTop: 200 }} />
   }
 
-  console.log(state);
   return (
     <MapView style={styles.map}
       initialRegion={{

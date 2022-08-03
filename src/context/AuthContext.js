@@ -46,15 +46,12 @@ const signup = (dispatch) => async ({ email, password }) => {
 };
 
 const signin = (dispatch) => async ({ email, password }) => {
-    console.log('signin invoked');
     try {
         const response = await trackerApi.post('/signin', { email, password });
         await AsyncStorage.setItem('token', response.data.token);
         dispatch({ type: 'signin', payload: response.data.token });
         console.log(response.data.token);
     } catch (err) {
-        // console.log(err);
-        // console.log(err.message);
         console.log(err.response.data.error);
         let errMsg;
 
