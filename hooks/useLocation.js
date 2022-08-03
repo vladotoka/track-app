@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import * as Location from 'expo-location';
 
-export default (callback) => {
+export default (shouldTrack, callback) => {
     const [err, setErr] = useState(null);
+    const [subscriber, setSubscriber] = useState(null);
 
     const startWatching = async () => {
         try {
@@ -11,20 +12,26 @@ export default (callback) => {
                 throw new Error('Permission to access location was denied');
             }
 
-            await Location.watchPositionAsync({
+            const subscr = await Location.watchPositionAsync({
                 accuracy: Location.Accuracy.BestForNavigation,
                 timeInterval: 1000,
                 distanceInterval: 10
             },
                 callback);
+            setSubscriber(subscr);
         } catch (e) {
             setErr(e.message);
         }
     }
 
     useEffect(() => {
-        startWatching();
-    }, []);
+        if (shouldTrack) {
+            startWatching();
+        } else {
+            subscriber?.remove();
+            setSubscriber(null);
+        }
+    }, [shouldTrack]);
 
     return [err];
 };
