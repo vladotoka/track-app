@@ -27,7 +27,7 @@ const TrackForm = () => {
                 ? <Button title="Stop" onPress={stopRecording} />
                 : <Button title="Start Recording" onPress={startRecording} />
             }
-
+            <Text>{locations.length}</Text>
         </View>
     )
 };
