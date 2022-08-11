@@ -8,7 +8,10 @@ const trackReducer = (state, action) => {
 };
 
 const fetchTracks = dispatch => () => { };
-const createTrack = dispatch => () => { };
+const createTrack = dispatch => (name, locations) => {
+    //make request to our api and save track
+    console.log(name, locations.length);
+};
 
 export const { Context, Provider } = createDataContext(
     trackReducer,
