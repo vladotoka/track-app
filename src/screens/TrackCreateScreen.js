@@ -3,7 +3,7 @@ import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React, { useContext, useCallback } from 'react';
 import { Text } from '@rneui/themed';
 import { Context as LocationContext } from '../context/LocationContext';
-import useLocation from '../../hooks/useLocation';
+import useLocation from '../hooks/useLocation';
 import { useIsFocused } from '@react-navigation/native';
 
 import Map from '../components/Map';

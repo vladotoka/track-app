@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Context as TrackContext } from "../src/context/TrackContext";
-import { Context as LocationContext } from "../src/context/LocationContext";
-import * as RootNavigation from '../src/navigation/RootNavigation';
+import { Context as TrackContext } from "../context/TrackContext";
+import { Context as LocationContext } from "../context/LocationContext";
+import * as RootNavigation from '../navigation/RootNavigation';
 
 export default () => {
     const { createTrack } = useContext(TrackContext);

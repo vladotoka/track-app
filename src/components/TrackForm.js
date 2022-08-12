@@ -2,8 +2,7 @@ import { View, Text } from 'react-native';
 import React, { useContext } from 'react';
 import { Input, Button } from '@rneui/themed';
 import { Context as LocationContext } from '../context/LocationContext';
-import useSaveTrack from '../../hooks/useSaveTrack';
-
+import useSaveTrack from '../hooks/useSaveTrack';
 
 import Spacer from './Spacer';
 
