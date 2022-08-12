@@ -6,30 +6,31 @@ import NavLink from '../components/NavLink';
 import { useFocusEffect } from '@react-navigation/native';
 
 const SignupScreen = ({ navigation }) => {
-  const { state, signup, clearErrorMessage } = useContext(AuthContext);
+	const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
-  return (
-    <View style={styles.container}>
-      <AuthForm
-        headerText="Sign Up for TrackMe"
-        errorMessage={state.errorMessage}
-        onSubmit={signup}
-        submitButtonText="Sign Up" />
-      <NavLink
-        navigation={navigation}
-        routeName="Signin"
-        text="Already have an account? Sign in instead"
-        clearErrorMessage={clearErrorMessage}
-      />
-    </View>
-  )
+	return (
+		<View style={styles.container}>
+			<AuthForm
+				headerText="Sign Up for TrackMe"
+				errorMessage={state.errorMessage}
+				onSubmit={signup}
+				submitButtonText="Sign Up"
+			/>
+			<NavLink
+				navigation={navigation}
+				routeName="Signin"
+				text="Already have an account? Sign in instead"
+				clearErrorMessage={clearErrorMessage}
+			/>
+		</View>
+	);
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  }
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+	},
 });
 
 export default SignupScreen;
