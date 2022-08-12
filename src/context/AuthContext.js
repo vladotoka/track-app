@@ -11,6 +11,8 @@ const authReducer = (state, action) => {
             return { errMsg: '', token: action.payload };
         case 'signout':
             return { errMsg: '', token: null };
+        case 'set_email':
+            return { ...state, email: action.payload };
         case 'clear_error_message':
             return { ...state, errorMessage: '' };
         default:
@@ -24,7 +26,9 @@ const signup = (dispatch) => async ({ email, password }) => {
         const response = await trackerApi.post('/signup', { email, password });
         // storing the JWT auth token in async Storage
         await AsyncStorage.setItem('token', response.data.token);
-        dispatch({ type: 'signin', payload: response.data.token })
+        await AsyncStorage.setItem('email', email); //temp add to display user in account screen
+        dispatch({ type: 'signin', payload: response.data.token });
+        dispatch({ type: 'set_email', payload: email }); //temp add to display user in account screen
         console.log(response.data);
     } catch (err) {
         console.log(err.response.data);
@@ -49,7 +53,9 @@ const signin = (dispatch) => async ({ email, password }) => {
     try {
         const response = await trackerApi.post('/signin', { email, password });
         await AsyncStorage.setItem('token', response.data.token);
+        await AsyncStorage.setItem('email', email); //temp add to display user in account screen
         dispatch({ type: 'signin', payload: response.data.token });
+        dispatch({ type: 'set_email', payload: email }); //temp add to display user in account screen
         console.log(response.data.token);
     } catch (err) {
         console.log(err.response.data.error);
@@ -68,6 +74,7 @@ const signin = (dispatch) => async ({ email, password }) => {
 
 const signout = (dispatch) => async () => {
     await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('email'); //temp add to display user in account screen
     dispatch({ type: 'signout' })
 };
 
@@ -76,11 +83,15 @@ const clearErrorMessage = (dispatch) => () => {
 };
 
 const tryLocalSignin = (dispatch) => async () => {
-    //chech if there is a JWT in async storage
+    //check if there is a JWT in async storage
     const token = await AsyncStorage.getItem('token');
     console.log('try local signin invoked, token: ', token);
     if (token) {
         dispatch({ type: 'signin', payload: token });
+        const email = await AsyncStorage.getItem('email'); //temp add to display user in account screen
+        if (email) {
+            dispatch({ type: 'set_email', payload: email });
+        }
     } else {
         RootNavigation.navigate('Signup');
     }
@@ -89,5 +100,5 @@ const tryLocalSignin = (dispatch) => async () => {
 export const { Provider, Context } = createDataContext(
     authReducer,
     { signup, signin, signout, clearErrorMessage, tryLocalSignin },
-    { token: null, errorMessage: '' }
+    { token: null, errorMessage: '', email: null }
 );
