@@ -19,7 +19,6 @@ const TrackListScreen = ({ navigation }) => {
 
 	useFocusEffect(
 		useCallback(() => {
-			console.log('focus');
 			fetchTracks();
 		}, [])
 	);
@@ -31,7 +30,9 @@ const TrackListScreen = ({ navigation }) => {
 				keyExtractor={(item) => item._id}
 				renderItem={({ item }) => (
 					<TouchableOpacity
-						onPress={() => navigation.navigate('TrackDetail', { item })}
+						onPress={() =>
+							navigation.navigate('TrackDetail', { _id: item._id })
+						}
 					>
 						<ListItem>
 							<Avatar

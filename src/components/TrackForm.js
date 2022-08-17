@@ -19,7 +19,7 @@ const TrackForm = () => {
 		<View>
 			<Spacer>
 				{recording ? (
-					<Text>recording track: {name}</Text>
+					<Text>Recording track {name}</Text>
 				) : (
 					<Input
 						value={name}
@@ -40,7 +40,7 @@ const TrackForm = () => {
 					<Button title="Save Recording" onPress={saveTrack} />
 				) : null}
 			</Spacer>
-			<Text>{locations.length}</Text>
+			<Text>Recorded points: {locations.length}</Text>
 		</View>
 	);
 };

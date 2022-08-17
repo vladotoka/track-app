@@ -27,7 +27,6 @@ const TrackCreateScreen = ({ navigation }) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View>
-				<Text h3>Create a Track</Text>
 				<Map />
 				{err && <Text>{err}</Text>}
 				<TrackForm />
