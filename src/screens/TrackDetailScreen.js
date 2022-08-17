@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context as TrackContext } from '../context/TrackContext';
 
-const TrackDetailScreen = () => {
+const TrackDetailScreen = ({ route }) => {
+	const { state } = useContext(TrackContext);
+	
 	return (
 		<View>
-			<Text>TrackDetailScreen</Text>
+			<Text>Track name: {route.params.item.name}</Text>
 		</View>
 	);
 };

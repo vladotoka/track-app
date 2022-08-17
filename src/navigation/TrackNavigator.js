@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './RootNavigation';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { Context as LocationContext } from '../context/LocationContext';
 import { Context as AuthContext } from '../context/AuthContext';
 import AccountScreen from '../screens/AccountScreen';
 import SigninScreen from '../screens/SigninScreen';
@@ -30,12 +31,15 @@ function LoginFlow() {
 }
 
 function MainFlow() {
+	const {state: {recording}} = useContext(LocationContext);
+
 	return (
 		<MenuBottomTab.Navigator>
 			<MenuBottomTab.Screen
 				name="TrackFlow"
 				component={TrackListFlow}
 				options={{
+					headerShown: false,
 					tabBarLabel: 'Tracks',
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons
@@ -50,6 +54,8 @@ function MainFlow() {
 				name="TrackCreate"
 				component={TrackCreateScreen}
 				options={{
+					tabBarBadge: recording ? 'rec' : null,
+					title: 'Record New Track',
 					tabBarLabel: 'New track',
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons
@@ -76,8 +82,16 @@ function MainFlow() {
 function TrackListFlow() {
 	return (
 		<TrackStack.Navigator>
-			<TrackStack.Screen name="TrackList" component={TrackListScreen} />
-			<TrackStack.Screen name="TrackDetail" component={TrackDetailScreen} />
+			<TrackStack.Screen
+				name="TrackList"
+				component={TrackListScreen}
+				options={{ title: 'Saved Tracks' }}
+			/>
+			<TrackStack.Screen
+				name="TrackDetail"
+				component={TrackDetailScreen}
+				options={{ title: 'Track Details' }}
+			/>
 		</TrackStack.Navigator>
 	);
 }

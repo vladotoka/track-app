@@ -34,7 +34,11 @@ const TrackListScreen = ({ navigation }) => {
 						onPress={() => navigation.navigate('TrackDetail', { item })}
 					>
 						<ListItem>
-							<Avatar source={{ uri: 'https://picsum.photos/seed/viks/200' }} />
+							<Avatar
+								source={{
+									uri: `https://picsum.photos/seed/viks${item.name}/200`,
+								}}
+							/>
 							<ListItemContent>
 								<ListItemTitle>{item.name}</ListItemTitle>
 							</ListItemContent>

@@ -8,7 +8,7 @@ export default () => {
 	const {
 		state: { locations, name },
 		reset,
-	} = useContext(LocationContext); // destruction may crash
+	} = useContext(LocationContext);
 
 	const saveTrack = () => {
 		createTrack(name, locations);
