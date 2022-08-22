@@ -5,13 +5,14 @@ import MapView, { Polyline } from 'react-native-maps';
 
 const TrackDetailScreen = ({ route }) => {
 	const { state } = useContext(TrackContext);
-	const track = state.find((tr) => (tr._id = route.params._id));
+	const track = state.find((tr) => (tr._id === route.params._id));
 	const indexOfLastLocation = track.locations.length - 1;
 	const initialCoordinates = track.locations[0].coords;
 	console.log(track);
 	return (
 		<View>
 			<Text style={styles.title}>{track.name}</Text>
+			<Text>id:{route.params._id}</Text>
 			<MapView
 				style={styles.map}
 				initialRegion={{
