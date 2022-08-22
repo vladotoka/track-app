@@ -2,7 +2,7 @@
   "expo": {
     "name": "TrackMe",
     "slug": "TrackMe",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -28,7 +28,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.vladimir.k.terziev.TrackMe"
+      "package": "com.vladimir.k.terziev.TrackMe",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAZhjPh_z5rsoA-_5GFsRRPGw_dFO3A2_0"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -7,6 +7,7 @@ const AccountScreen = () => {
 	const { state, signout } = useContext(AuthContext);
 	return (
 		<View>
+			<Text>App version 1.0.4</Text>
 			{state.email && <Text>user email: {state.email}</Text>}
 			<Spacer>
 				<Button title="Sign out" onPress={signout} />
