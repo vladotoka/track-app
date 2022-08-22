@@ -1,4 +1,4 @@
-import '../_mockLocation';
+// import '../_mockLocation'; //import this file for testing only - it will cause fake changes of GPS location to expo location
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React, { useContext, useCallback } from 'react';
 import { Text } from '@rneui/themed';
